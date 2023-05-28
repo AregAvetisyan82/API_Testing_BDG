@@ -6,15 +6,13 @@ from lib import payloads
 
 
 def test_register_successful_check_id_and_token():
-    data = make_post_request(endpoints.register_user_reqres_in, json_body=payloads.valid_user_credentials(),
-                             status_code=200)
+    data = make_post_request(endpoints.register_user_reqres_in, json_body=payloads.valid_user_credentials())
     user_id, auth_token = data['id'], data['token']
     assert user_id == testing_data.user_id_number, auth_token == testing_data.token
 
 
 def test_login_successful_and_check_token():
-    user_login = make_post_request(endpoints.login_user_reqres_in, json_body=payloads.valid_user_credentials(),
-                                   status_code=200)
+    user_login = make_post_request(endpoints.login_user_reqres_in, json_body=payloads.valid_user_credentials())
     token = user_login['token']
     assert token == testing_data.token
 
